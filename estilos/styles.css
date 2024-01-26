@@ -28,6 +28,16 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+#container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #1a1e24;
+    border-radius: 10px;
+    border: #ffd700 solid 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 #instrucciones-container {
     max-width: 600px;
     margin: 50px auto;
@@ -59,6 +69,34 @@ body {
     list-style: none;
     color: #ffffff;
 }
+
+@media (max-width: 600px) {
+    #instrucciones-container {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+        padding: 15px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow-y: auto; /* Añadir overflow-y para permitir desplazamiento vertical */
+
+        /* Otros estilos que ya tenías... */
+    }
+
+    #container {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+        padding: 15px;
+    }
+}
+
+
+
 
 h1 {
     color: #df1313; 
