@@ -192,25 +192,52 @@ function pedirCarta() {
     }
 }
 
-function plantarse() {
-    ronda = 1
+async function plantarse() {
+    ronda = 1;
     if (comenzoElGame === true && sumaDelJugador <= NUMERO_MAXIMO && sePlanto === false) {
-        mostrarCartaMaquinaImg(indicePosicionUno)
-        sePlanto = true
-        sumaDeLaMaquina = sumarCartasDelComienzoDePartida(cartasDeLaMaquina)
-        mostrarSumaMaquinaDom(sumaDeLaMaquina, cartasDeLaMaquina)
-        ronda++
+        // Mostrar la primera carta inmediatamente
+        await mostrarCartaMaquinaConRetraso(indicePosicionUno, 0);
+
+        sePlanto = true;
+        sumaDeLaMaquina = sumarCartasDelComienzoDePartida(cartasDeLaMaquina);
+        await mostrarSumaMaquinaDomConRetraso(sumaDeLaMaquina, cartasDeLaMaquina);
+        ronda++;
+
+        // Mostrar las cartas de la máquina con retraso
         while (sumaDeLaMaquina < NUMERO_MAXIMO && sumaDeLaMaquina < sumaDelJugador) {
-            let indice = repartirCarta()
-            cartasDeLaMaquina[ronda] = cartas[indice].numero
-            mostrarCartaMaquinaImg(indice)
-            sumaDeLaMaquina = sumarCartaConIndexOF(sumaDeLaMaquina, cartasDeLaMaquina, ronda)
-            mostrarSumaMaquinaDom(sumaDeLaMaquina, cartasDeLaMaquina)
-            ronda++
+            let indice = repartirCarta();
+            cartasDeLaMaquina[ronda] = cartas[indice].numero;
+            await mostrarCartaMaquinaConRetraso(indice, ronda * 450);  // Se aplica un retraso de 1 segundo por carta
+            sumaDeLaMaquina = sumarCartaConIndexOF(sumaDeLaMaquina, cartasDeLaMaquina, ronda);
+            await mostrarSumaMaquinaDomConRetraso(sumaDeLaMaquina, cartasDeLaMaquina);
+            ronda++;
         }
-        resultadoBlackJack(sumaDelJugador, sumaDeLaMaquina)
+
+        // Mostrar el resultado después de que todas las cartas estén visibles
+        resultadoBlackJack(sumaDelJugador, sumaDeLaMaquina);
     }
 }
+
+// Función para mostrar una carta de la máquina con retraso
+async function mostrarCartaMaquinaConRetraso(indice, retraso) {
+    return new Promise(resolve => {
+        setTimeout(async function () {
+            await mostrarCartaMaquinaImg(indice);
+            resolve();
+        }, retraso);
+    });
+}
+
+// Función para mostrar la suma de la máquina con retraso
+async function mostrarSumaMaquinaDomConRetraso(suma, cartas) {
+    return new Promise(resolve => {
+        setTimeout(async function () {
+            await mostrarSumaMaquinaDom(suma, cartas);
+            resolve();
+        }, 450);  // Se aplica un retraso de 1 segundo
+    });
+}
+
 
 function sumarCartasDelJugador() {
     sumaDelJugador = sumarCartaConIndexOF(sumaDelJugador, cartasDelJugador, ronda);
