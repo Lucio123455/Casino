@@ -25,16 +25,34 @@ saldoEnPantalla.textContent = saldo
 // ARRAY DE OBJETOS CARTAS
 let palos = ['pica', 'corazón', 'diamante', 'trébol'];
 let cartas = [];
+
 for (let i = 1; i <= 10; i++) {
     for (let j = 0; j < palos.length; j++) {
         cartas.push({ numero: i, palo: palos[j] });
     }
 }
+
 let letras = ['J', 'Q', 'K'];
 for (let k = 0; k < letras.length; k++) {
     for (let l = 0; l < palos.length; l++) {
-        cartas.push({numero: 10, letra: letras[k], palo: palos[l] });
+        cartas.push({ numero: 10, letra: letras[k], palo: palos[l] });
     }
+}
+
+for (let i = 0; i < cartas.length; i++) {
+    cartas[i].imagen = `imagenes_cartas/${i}.png`;
+}
+
+function mostrarCartaJugadorImg(indice) {
+    let carta = document.createElement('img');
+    carta.src = cartas[indice].imagen
+    document.getElementById('cartasJugador').appendChild(carta);
+}
+
+function mostrarCartaMaquinaImg(indice) {
+    let carta = document.createElement('img');
+    carta.src = cartas[indice].imagen
+    document.getElementById('cartasMaquina').appendChild(carta);
 }
 
 //FUNCIONES RELACIONADAS SALDOS Y APUESTA
@@ -45,9 +63,9 @@ function actualizarSaldo(nuevoSaldo) {
 
 const valorDeLaRecargaDelSaldo = 1000
 
-function recargarSaldo(){
+function recargarSaldo() {
     if (comenzoElGame === false) {
-        saldo +=valorDeLaRecargaDelSaldo
+        saldo += valorDeLaRecargaDelSaldo
         saldoEnPantalla.textContent = saldo
         actualizarSaldo(saldo)
     }
@@ -63,7 +81,7 @@ function apostar() {
     }
 }
 
-function borrarApuesta(){
+function borrarApuesta() {
     if (comenzoElGame === false) {
         saldo += apuesta
         saldoEnPantalla.textContent = saldo
@@ -82,12 +100,12 @@ function restarSaldo() {
 let intervaloApostar;
 
 function iniciarApostar() {
-    apostar();  
-    intervaloApostar = setInterval(apostar, 100);  
+    apostar();
+    intervaloApostar = setInterval(apostar, 100);
 }
 
 function detenerApostar() {
-    clearInterval(intervaloApostar);  
+    clearInterval(intervaloApostar);
 }
 
 function modificarSaldo() {
@@ -104,9 +122,6 @@ function jugarPartida() {
         sumaDeLaMaquina = 0
         ronda = RONDAS_NECESARIAS_PARA_COMENZAR
         sePlanto = false
-        cartasJugadorMostrar.textContent = "";
-        cartasMaquinaMostrar.textContent = "";
-        resultado.textContent = "";
         actualizarSaldo(saldo)
         iniciarJuego()
     }
@@ -117,28 +132,31 @@ function iniciarJuego() {
     terminoElGame = false
     comenzoElGame = true
     if (sumaDelJugador === NUMERO_MAXIMO) {
-        resultadoBlackJack(primeraSuma,sumaDeLaMaquina)
+        resultadoBlackJack(primeraSuma, sumaDeLaMaquina)
         sePlanto = true
     }
 }
 
+let indicePosicionUno
+
 function comienzoDePartidaDom(cartasDelJugador, cartasDeLaMaquina) {
     for (let i = 0; i < RONDAS_NECESARIAS_PARA_COMENZAR; i++) {
-        cartasDeLaMaquina[i] = repartirCarta()
-        cartasDelJugador[i] = repartirCarta()
+        let indice = repartirCarta()
+        cartasDeLaMaquina[i] = cartas[indice].numero
+        if (i === 0) {
+            mostrarCartaMaquinaImg(indice)
+        } else {
+            indicePosicionUno = indice
+        }
+
+        indice = repartirCarta()
+        cartasDelJugador[i] = cartas[indice].numero
+        mostrarCartaJugadorImg(indice)
     }
-    informarCartasDelComienzoDeLaPartidaDom(cartasDelJugador, cartasDeLaMaquina)
     primeraSuma = sumarCartasDelComienzoDePartida(cartasDelJugador)
     mostrarSumaDom(primeraSuma, cartasDelJugador)
     mostrarSumaMaquinaDom(cartasDeLaMaquina[0], cartasDeLaMaquina)
     return primeraSuma
-}
-
-function informarCartasDelComienzoDeLaPartidaDom(cartasDelJugador, cartasDeLaMaquina) {
-    for (let i = 0; i < RONDAS_NECESARIAS_PARA_COMENZAR; i++) {
-        mostrarCartaJugadorDom(cartasDelJugador[i]);
-    }   
-    mostrarCartaMaquinaDom(cartasDeLaMaquina[0]);
 }
 
 function sumarCartasDelComienzoDePartida(cartas) {
@@ -161,8 +179,9 @@ const LIMITE_CARTAS = 8
 
 function pedirCarta() {
     if (comenzoElGame === true && ronda < LIMITE_CARTAS && sumaDelJugador < NUMERO_MAXIMO && sePlanto === false) {
-        cartasDelJugador[ronda] = repartirCarta();
-        mostrarCartaJugadorDom(cartasDelJugador[ronda]);
+        let indice = repartirCarta()
+        cartasDelJugador[ronda] = cartas[indice].numero
+        mostrarCartaJugadorImg(indice);
         sumarCartasDelJugador();
 
         if (sumaDelJugador > NUMERO_MAXIMO) {
@@ -176,14 +195,15 @@ function pedirCarta() {
 function plantarse() {
     ronda = 1
     if (comenzoElGame === true && sumaDelJugador <= NUMERO_MAXIMO && sePlanto === false) {
-        mostrarCartaMaquinaDom(cartasDeLaMaquina[ronda])
+        mostrarCartaMaquinaImg(indicePosicionUno)
         sePlanto = true
         sumaDeLaMaquina = sumarCartasDelComienzoDePartida(cartasDeLaMaquina)
         mostrarSumaMaquinaDom(sumaDeLaMaquina, cartasDeLaMaquina)
         ronda++
         while (sumaDeLaMaquina < NUMERO_MAXIMO && sumaDeLaMaquina < sumaDelJugador) {
-            cartasDeLaMaquina[ronda] = repartirCarta()
-            mostrarCartaMaquinaDom(cartasDeLaMaquina[ronda])
+            let indice = repartirCarta()
+            cartasDeLaMaquina[ronda] = cartas[indice].numero
+            mostrarCartaMaquinaImg(indice)
             sumaDeLaMaquina = sumarCartaConIndexOF(sumaDeLaMaquina, cartasDeLaMaquina, ronda)
             mostrarSumaMaquinaDom(sumaDeLaMaquina, cartasDeLaMaquina)
             ronda++
@@ -217,30 +237,41 @@ function sumarCartaConIndexOF(suma, cartas, ronda) {
     return suma;
 }
 
+function mostrarAlerta(titulo, mensaje, tipo, callback) {
+    Swal.fire({
+        position: "top",
+        allowOutsideClick: false,
+        title: titulo,
+        text: mensaje,
+        icon: tipo,
+        confirmButtonText: 'Aceptar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            if (callback) {
+                callback();
+            }
+        }
+    });
+}
+
 function resultadoBlackJack(sumaDelJugador, sumaDeLaMaquina) {
     if (sumaDelJugador > NUMERO_MAXIMO) {
-        resultado.textContent = "PERDISTE";
-        resultado.className = "resultado-perdido";
+        mostrarAlerta('¡PERDISTE!', 'Tu puntuación superó el límite', 'error', borrarMesa);
         saldo = saldo;
-    }else if(sumaDelJugador === NUMERO_MAXIMO && cartasDelJugador.length === 2){
-        resultado.textContent = "GANASTE";
-        resultado.className = "resultado-ganado";
+    } else if (sumaDelJugador === NUMERO_MAXIMO && cartasDelJugador.length === 2) {
+        mostrarAlerta('¡GANASTE!', 'BlackJack. ¡Felicidades!', 'success', borrarMesa);
         saldo = saldo + apuesta * 2.5;
     } else if (sumaDeLaMaquina > NUMERO_MAXIMO) {
-        resultado.textContent = "GANASTE";
-        resultado.className = "resultado-ganado";
+        mostrarAlerta('¡GANASTE!', 'La máquina se pasó del límite', 'success', borrarMesa);
         saldo = saldo + apuesta * 2;
     } else if (sumaDelJugador === sumaDeLaMaquina) {
-        resultado.textContent = "EMPATE";
-        resultado.className = "resultado-empate";
+        mostrarAlerta('¡EMPATE!', 'La partida terminó en empate', 'info', borrarMesa);
         saldo = saldo + apuesta;
     } else if (sumaDelJugador > sumaDeLaMaquina) {
-        resultado.textContent = "GANASTE";
-        resultado.className = "resultado-ganado";
+        mostrarAlerta('¡GANASTE!', 'Tu puntuación es mayor que la de la máquina', 'success', borrarMesa);
         saldo = saldo + apuesta * 2;
     } else if (sumaDeLaMaquina > sumaDelJugador) {
-        resultado.textContent = "PERDISTE";
-        resultado.className = "resultado-perdido";
+        mostrarAlerta('¡PERDISTE!', 'La puntuación de la máquina es mayor que la tuya', 'error', borrarMesa);
         saldo = saldo;
     }
 
@@ -251,9 +282,18 @@ function resultadoBlackJack(sumaDelJugador, sumaDeLaMaquina) {
     modificarSaldo()
 }
 
+function borrarMesa() {
+    cartasJugadorMostrar.textContent = "";
+    cartasMaquinaMostrar.textContent = "";
+    sumaJugador.textContent = "";
+    sumaMaquina.textContent = "";
+}
+
+const sumaJugador = document.getElementById("sumaJugador")
+
 function mostrarSumaDom(suma, cartas) {
     let yaSalioUnOnce = cartas.lastIndexOf(valorDelAsAdicional);
-    const sumaJugador = document.getElementById("sumaJugador")
+
     if (yaSalioUnOnce !== -1) {
         sumaJugador.textContent = suma + " o " + (suma - 10);
     } else {
@@ -261,9 +301,11 @@ function mostrarSumaDom(suma, cartas) {
     }
 }
 
+const sumaMaquina = document.getElementById("sumaMaquina")
+
 function mostrarSumaMaquinaDom(suma, cartas) {
     let yaSalioUnOnce = cartas.lastIndexOf(valorDelAsAdicional);
-    const sumaMaquina = document.getElementById("sumaMaquina")
+
     if (yaSalioUnOnce !== -1) {
         sumaMaquina.textContent = suma + " o " + (suma - 10);
     } else {
@@ -274,19 +316,13 @@ function mostrarSumaMaquinaDom(suma, cartas) {
     }
 }
 
-function mostrarCartaJugadorDom(carta) {
-    cartasJugadorMostrar.innerHTML += carta + "&nbsp;&nbsp;&nbsp;&nbsp;";
-}
 
-function mostrarCartaMaquinaDom(carta) {
-    cartasMaquinaMostrar.innerHTML += carta + "&nbsp;&nbsp;&nbsp;&nbsp;"; 
-}
 
 const CARTAS_MAZO = 52
 
 function repartirCarta() {
     let indiceCarta = Math.floor(Math.random() * CARTAS_MAZO);
-    return cartas[indiceCarta].numero
+    return indiceCarta
 }
 
 //INSTRUCCIONES
@@ -294,7 +330,7 @@ function repartirCarta() {
 let noMostrarMas = localStorage.getItem('noMostrarMas');
 noMostrarMas = JSON.parse(localStorage.getItem('noMostrarMas')) || false;
 
-function mostrarInstruccionesDesdeElJuego(){
+function mostrarInstruccionesDesdeElJuego() {
     document.getElementById('instrucciones-container').style.display = 'block';
     document.getElementById('no-mostrar-mas').style.display = 'none';
 }
@@ -302,17 +338,18 @@ function mostrarInstruccionesDesdeElJuego(){
 function mostrarInstrucciones() {
     if (noMostrarMas === false) {
         document.getElementById('instrucciones-container').style.display = 'block';
-    } 
+    }
 }
 
 function cerrarInstrucciones() {
     document.getElementById('instrucciones-container').style.display = 'none';
 }
 
-function noMostrarMasFuncion(){
+function noMostrarMasFuncion() {
     cerrarInstrucciones();
     localStorage.setItem('noMostrarMas', JSON.stringify(true));
 }
 
 mostrarInstrucciones();
 
+console.log(cartas)

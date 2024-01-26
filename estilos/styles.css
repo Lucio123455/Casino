@@ -168,4 +168,18 @@ button:hover {
     height: auto;
 }
 
-
+/* En tu archivo de estilo CSS */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Aplicar la clase de animación a las imágenes */
+  img {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
