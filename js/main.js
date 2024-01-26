@@ -379,4 +379,18 @@ function noMostrarMasFuncion() {
 
 mostrarInstrucciones();
 
-console.log(cartas)
+// CAMBIAR FONDO 
+
+let imagenesDeFondo = [];
+
+for (let i = 0; i < 6; i++) {
+    imagenesDeFondo[i] = `imagenes_fondo/fondo_${i}.jpg`;
+}
+
+function cambiarFondo() {
+    const imgFondo = document.getElementById("background-img");
+    const nuevaImagen = imagenesDeFondo[Math.floor(Math.random() * imagenesDeFondo.length)];
+    imgFondo.src = nuevaImagen;
+}
+
+cambiarFondo();

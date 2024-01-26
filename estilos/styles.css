@@ -1,9 +1,21 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url(https://e7.pngegg.com/pngimages/608/195/png-transparent-free-red-poker-casino-background.png);
+    /*background-image: url(https://e7.pngegg.com/pngimages/608/195/png-transparent-free-red-poker-casino-background.png);*/
     color: white;
     text-align: center;
     margin: 0;
+}
+
+#background-img {
+    position: fixed;
+    margin: 0 auto 50px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1; /* Para colocar la imagen detrás del contenido */
 }
 
 #container {
@@ -14,6 +26,38 @@ body {
     border-radius: 10px;
     border: #ffd700 solid 3px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#instrucciones-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(26, 30, 36, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 31.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#instrucciones {
+    text-align: center; 
+}
+
+#instrucciones h2 {
+    color: #ffd700; 
+}
+
+#instrucciones ul {
+    list-style: none; 
+    padding: 0; 
+}
+
+#instrucciones li {
+    margin-bottom: 10px;
+    list-style: none;
+    color: #ffffff;
 }
 
 h1 {
@@ -105,50 +149,6 @@ button:hover {
     padding: 10px;
     display: inline-block;
     
-}
-
-.resultado-perdido {
-    color: #df1313;
-}
-
-.resultado-ganado {
-    color: #32cd32;
-}
-
-.resultado-empate {
-    color: #ffd700;
-}
-
-#instrucciones-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    z-index: 999;
-}
-
-#instrucciones {
-    text-align: center; 
-}
-
-#instrucciones h2 {
-    color: #ffd700; 
-}
-
-#instrucciones ul {
-    list-style: none; 
-    padding: 0; 
-}
-
-#instrucciones li {
-    margin-bottom: 10px;
-    list-style: none;
 }
 
 #inicio {
