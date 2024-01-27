@@ -48,6 +48,7 @@ function mostrarCartaJugadorImg(indice) {
     carta.src = cartas[indice].imagen;
     carta.classList.add('flip'); // Agregar la clase para activar la animación
     document.getElementById('cartasJugador').appendChild(carta);
+    sonidoCartas.play()
 }
 
 
@@ -56,6 +57,7 @@ function mostrarCartaMaquinaImg(indice) {
     carta.src = cartas[indice].imagen
     carta.classList.add('flip');
     document.getElementById('cartasMaquina').appendChild(carta);
+    sonidoCartas.play()
 }
 
 //FUNCIONES RELACIONADAS SALDOS Y APUESTA
@@ -80,6 +82,7 @@ function apostar() {
     if (comenzoElGame === false && saldo > 0) {
         apuesta += valorDeLaApuestaGenerica;
         apuestaEnPantalla.textContent = apuesta;
+        sonidoApuesta.play();
         restarSaldo();
     }
 }
@@ -104,6 +107,7 @@ let intervaloApostar;
 
 function iniciarApostar() {
     apostar();
+    
     intervaloApostar = setInterval(apostar, 100);
 }
 
@@ -127,6 +131,7 @@ function jugarPartida() {
         sePlanto = false
         actualizarSaldo(saldo)
         iniciarJuego()
+        sonidoCartasComienzo.play()
     }
 }
 
@@ -288,21 +293,27 @@ function resultadoBlackJack(sumaDelJugador, sumaDeLaMaquina) {
     if (sumaDelJugador > NUMERO_MAXIMO) {
         mostrarAlerta('¡PERDISTE!', 'Tu puntuación superó el límite', 'error', borrarMesa);
         saldo = saldo;
+        gameOver.play()
     } else if (sumaDelJugador === NUMERO_MAXIMO && cartasDelJugador.length === 2) {
         mostrarAlerta('¡GANASTE!', 'BlackJack. ¡Felicidades!', 'success', borrarMesa);
         saldo = saldo + apuesta * 2.5;
+        sonidoGanar.play()
     } else if (sumaDeLaMaquina > NUMERO_MAXIMO) {
         mostrarAlerta('¡GANASTE!', 'La máquina se pasó del límite', 'success', borrarMesa);
         saldo = saldo + apuesta * 2;
+        sonidoGanar.play()
     } else if (sumaDelJugador === sumaDeLaMaquina) {
         mostrarAlerta('¡EMPATE!', 'La partida terminó en empate', 'info', borrarMesa);
         saldo = saldo + apuesta;
     } else if (sumaDelJugador > sumaDeLaMaquina) {
         mostrarAlerta('¡GANASTE!', 'Tu puntuación es mayor que la de la máquina', 'success', borrarMesa);
         saldo = saldo + apuesta * 2;
+        sonidoGanar.play()
     } else if (sumaDeLaMaquina > sumaDelJugador) {
         mostrarAlerta('¡PERDISTE!', 'La puntuación de la máquina es mayor que la tuya', 'error', borrarMesa);
         saldo = saldo;
+        gameOver.play()
+
     }
 
     terminoElGame = true
@@ -346,8 +357,6 @@ function mostrarSumaMaquinaDom(suma, cartas) {
     }
 }
 
-
-
 const CARTAS_MAZO = 52
 
 function repartirCarta() {
@@ -381,8 +390,6 @@ function noMostrarMasFuncion() {
 
 mostrarInstrucciones();
 
-
-
 // CAMBIAR FONDO 
 
 let imagenesDeFondo = [];
@@ -395,7 +402,16 @@ function cambiarFondo() {
     const imgFondo = document.getElementById("background-img");
     const nuevaImagen = imagenesDeFondo[Math.floor(Math.random() * imagenesDeFondo.length)];
     imgFondo.src = nuevaImagen;
+    musicaFondo.play()
 }
 
+//SONIDOS 
+
+let sonidoApuesta = document.getElementById("sonido_apuesta");
+let musicaFondo = document.getElementById("musica_fondo");
+let sonidoGanar = document.getElementById("ganar_sonido")
+let sonidoCartas = document.getElementById("sonido_cartas")
+let sonidoCartasComienzo = document.getElementById("sonido_cartas_comienzo")
+let gameOver = document.getElementById("game_over")
 cambiarFondo();
 

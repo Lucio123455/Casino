@@ -207,6 +207,28 @@ button:hover {
     height: auto;
 }
 
+#info-container {
+    
+    justify-content: space-around;
+    color: #fff; /* Color del texto */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+#apuesta, #saldo {
+    text-align: center; /* Alineación del texto */
+}
+
+#apuesta p, #saldo p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo */
+}
+
+#apuesta span, #valorSaldo {
+    font-weight: bold; /* Texto en negrita */
+    color: #ffcc00; /* Color amarillo para resaltar */
+}
+
+
 
 @keyframes flipCard {
     0% {
@@ -221,6 +243,11 @@ button:hover {
         transform: rotateY(0deg); /* Rotación auténtica */
         opacity: 1;
     }
+}
+
+#background-img {
+    opacity: 100%;
+    
 }
 
 /* Aplicar la clase de animación a las imágenes */
