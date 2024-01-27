@@ -45,13 +45,16 @@ for (let i = 0; i < cartas.length; i++) {
 
 function mostrarCartaJugadorImg(indice) {
     let carta = document.createElement('img');
-    carta.src = cartas[indice].imagen
+    carta.src = cartas[indice].imagen;
+    carta.classList.add('flip'); // Agregar la clase para activar la animación
     document.getElementById('cartasJugador').appendChild(carta);
 }
+
 
 function mostrarCartaMaquinaImg(indice) {
     let carta = document.createElement('img');
     carta.src = cartas[indice].imagen
+    carta.classList.add('flip');
     document.getElementById('cartasMaquina').appendChild(carta);
 }
 
@@ -207,7 +210,7 @@ async function plantarse() {
         while (sumaDeLaMaquina < NUMERO_MAXIMO && sumaDeLaMaquina < sumaDelJugador) {
             let indice = repartirCarta();
             cartasDeLaMaquina[ronda] = cartas[indice].numero;
-            await mostrarCartaMaquinaConRetraso(indice, ronda * 450);  // Se aplica un retraso de 1 segundo por carta
+            await mostrarCartaMaquinaConRetraso(indice, ronda * 560);  // Se aplica un retraso de 1 segundo por carta
             sumaDeLaMaquina = sumarCartaConIndexOF(sumaDeLaMaquina, cartasDeLaMaquina, ronda);
             await mostrarSumaMaquinaDomConRetraso(sumaDeLaMaquina, cartasDeLaMaquina);
             ronda++;
@@ -234,7 +237,7 @@ async function mostrarSumaMaquinaDomConRetraso(suma, cartas) {
         setTimeout(async function () {
             await mostrarSumaMaquinaDom(suma, cartas);
             resolve();
-        }, 450);  // Se aplica un retraso de 1 segundo
+        }, 560);  // Se aplica un retraso de 1 segundo
     });
 }
 
@@ -354,8 +357,7 @@ function repartirCarta() {
 
 //INSTRUCCIONES
 
-let noMostrarMas = localStorage.getItem('noMostrarMas');
-noMostrarMas = JSON.parse(localStorage.getItem('noMostrarMas')) || false;
+let noMostrarMas = JSON.parse(localStorage.getItem('noMostrarMas')) || false;
 
 function mostrarInstruccionesDesdeElJuego() {
     document.getElementById('instrucciones-container').style.display = 'block';
@@ -363,7 +365,7 @@ function mostrarInstruccionesDesdeElJuego() {
 }
 
 function mostrarInstrucciones() {
-    if (noMostrarMas === false) {
+    if (noMostrarMas !== true) {
         document.getElementById('instrucciones-container').style.display = 'block';
     }
 }
@@ -378,6 +380,8 @@ function noMostrarMasFuncion() {
 }
 
 mostrarInstrucciones();
+
+
 
 // CAMBIAR FONDO 
 
@@ -394,3 +398,4 @@ function cambiarFondo() {
 }
 
 cambiarFondo();
+
