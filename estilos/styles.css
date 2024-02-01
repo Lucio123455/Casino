@@ -18,30 +18,34 @@ body {
     z-index: -1; /* Para colocar la imagen detrás del contenido */
 }
 
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta el tamaño para cubrir completamente el contenedor */
+    object-position: center;
+    z-index: -1; /* Para colocar la imagen detrás del contenido */
+}
+
+
 #container {
-    max-width: 600px;
-    margin: 50px auto;
+    max-width: 750px;
+    max-height: auto;
+    margin: 30px auto;
     padding: 20px;
-    background-color: #1a1e24;
+    background-color: rgba(26, 30, 36, 0.7);
     border-radius: 10px;
     border: #ffd700 solid 3px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-#container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #1a1e24;
-    border-radius: 10px;
-    border: #ffd700 solid 3px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
 
 #instrucciones-container {
-    max-width: 600px;
+    max-width: 750px;
     display: none;
-    margin: 50px auto;
+    margin: 30px auto;
     padding: 20px;
     background-color: rgba(26, 30, 36, 0.7);
     border-radius: 10px;
@@ -255,4 +259,71 @@ img.flip {
     animation: flipCard 1s ease-in-out;
 }
 
-  
+#toggleMusica {
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px; /* Ajusta el espacio interno del botón */
+}
+
+#botonColeccion {
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px; /* Ajusta el espacio interno del botón */
+}
+#coleccionImg {
+    width: 45px; /* Ajusta el tamaño del icono */
+    height: auto; /* Mantiene la proporción del icono */
+}
+#iconoMusica {
+    width: 45px; /* Ajusta el tamaño del icono */
+    height: auto; /* Mantiene la proporción del icono */
+}
+
+/* Estilos para la lista desplegable */
+#seleccionApuesta {
+    padding: 8px; /* Ajusta según sea necesario */
+    font-size: 14px; /* Ajusta según sea necesario */
+    border: 2px solid #ffd700; /* Color del borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #1a1e24; /* Color de fondo */
+    color: #ffd700; /* Color del texto */
+    margin-right: 10px; /* Ajusta según sea necesario */
+}
+
+/* Estilo para las opciones de la lista desplegable */
+#seleccionApuesta option {
+    background-color: #1a1e24; /* Color de fondo */
+    color: #ffd700; /* Color del texto */
+}
+
+#carrito {
+    width: 22px; /* Ancho del botón */
+    height: 22px; /* Altura del botón */
+    padding: 3.7px; /* Espaciado interno */
+    background-color: #fede5b; /* Color de fondo */
+    border: 0.5px solid #df1313;
+    border-radius: 50%; /* Bordes redondeados para hacer un círculo */
+}
+
+#carrito img {
+    width: 30px; /* Ajusta el tamaño de la imagen para que se ajuste al botón */
+    height: 100%;
+}
+#coleccion {
+    display: none;
+    overflow-x: auto;
+    max-width: 100%; /* Establece un ancho máximo para la sección */
+    overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si es necesario */
+}
+
+.fondoDelUsuario {
+    width: 80px; /* Ajusta el ancho de las imágenes según tus preferencias */
+    height: auto; /* Hace que la altura se ajuste automáticamente para mantener la proporción de la imagen */
+    margin-right: 10px; /* Agrega un margen a la derecha de cada imagen para separarlas */
+    max-width: 200px; /* Establece un ancho máximo para cada elemento */
+
+}

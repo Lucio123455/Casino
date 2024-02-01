@@ -1,0 +1,115 @@
+/*function comprarPackEspecial() {
+    const valorDelPack = 5000;
+
+    if (saldo >= valorDelPack) {
+        saldo -= valorDelPack;
+        actualizarSaldo(saldo, "saldo");
+        saldoEnPantalla.textContent = saldo;
+
+        const probabilidad = Math.random() * 1000;
+
+        if (probabilidad <= 200) {
+            saldo += 2500;
+            saldoEnPantalla.textContent = saldo;
+            abrirPack(2500, "saldo");
+        } else if (probabilidad <= 400) {
+            saldo += 10000;
+            saldoEnPantalla.textContent = saldo;
+            abrirPack(10000, "saldo");
+        } else if (probabilidad <= 485) {
+            saldo += 15000;
+            saldoEnPantalla.textContent = saldo;
+            abrirPack(15000, "saldo");
+        } else if (probabilidad <= 500) {
+            saldo += 50000;
+            saldoEnPantalla.textContent = saldo;
+            abrirPack(50000, "saldo");
+        } else if (probabilidad <= 700) {
+            let nuevoFondo = obtenerFondoPorRareza("basico", 3);
+            if (!comprobarSiYaExiste(nuevoFondo)) {
+                fondosDelUsuario.push(nuevoFondo);
+                contadorDeFondos++;
+                guardarEnLocalStorageLosFondos();
+                abrirPack(nuevoFondo, "fondo");
+            } else {
+                saldo += 300;
+                saldoEnPantalla.textContent = saldo;
+                abrirPack(nuevoFondo, "fondoRepetido");
+            }
+        } else if (probabilidad <= 900) {
+            let nuevoFondo = obtenerFondoPorRareza("comun", 4);
+            if (!comprobarSiYaExiste(nuevoFondo)) {
+                fondosDelUsuario.push(nuevoFondo);
+                contadorDeFondos++;
+                guardarEnLocalStorageLosFondos();
+                abrirPack(nuevoFondo, "fondo");
+            } else {
+                saldo += 300;
+                saldoEnPantalla.textContent = saldo;
+                abrirPack(nuevoFondo, "fondoRepetido");
+            }
+        } else if (probabilidad <= 1000) {
+            let nuevoFondo = obtenerFondoPorRareza("especial", 2);
+            if (!comprobarSiYaExiste(nuevoFondo)) {
+                fondosDelUsuario.push(nuevoFondo);
+                contadorDeFondos++;
+                guardarEnLocalStorageLosFondos();
+                abrirPack(nuevoFondo, "fondo");
+            } else {
+                saldo += 300;
+                saldoEnPantalla.textContent = saldo;
+                abrirPack(nuevoFondo, "fondoRepetido");
+            }
+        } 
+    }
+}
+
+function comprarPackLegendario() {
+    const valorDelPack = 50000;
+
+    if (saldo >= valorDelPack) {
+        saldo -= valorDelPack;
+        actualizarSaldo(saldo, "saldo");
+        saldoEnPantalla.textContent = saldo;
+
+        const probabilidad = Math.random() * 1000;
+
+        if (probabilidad <= 750) {
+            let nuevoFondo = obtenerFondoPorRareza("epico", 4);
+            if (!comprobarSiYaExiste(nuevoFondo)) {
+                fondosDelUsuario.push(nuevoFondo);
+                contadorDeFondos++;
+                guardarEnLocalStorageLosFondos();
+                abrirPack(nuevoFondo, "fondo",true);
+            } else {
+                saldo += 300;
+                saldoEnPantalla.textContent = saldo;
+                abrirPack(nuevoFondo, "fondoRepetido", true);
+            }
+        } else if (probabilidad <= 751) {
+            let nuevoFondo = obtenerFondoPorRareza("mitico", 1);
+            if (!comprobarSiYaExiste(nuevoFondo)) {
+                fondosDelUsuario.push(nuevoFondo);
+                contadorDeFondos++;
+                guardarEnLocalStorageLosFondos();
+                abrirPack(nuevoFondo, "fondo",true);
+            } else {
+                saldo += 300;
+                saldoEnPantalla.textContent = saldo;
+                abrirPack(nuevoFondo, "fondo",true);
+            }
+        } else if (probabilidad <= 1000) {
+            let nuevoFondo = obtenerFondoPorRareza("legendario", 1);
+            if (!comprobarSiYaExiste(nuevoFondo)) {
+                fondosDelUsuario.push(nuevoFondo);
+                contadorDeFondos++;
+                guardarEnLocalStorageLosFondos();
+                abrirPack(nuevoFondo, "fondo",true);
+            } else {
+                saldo += 300;
+                saldoEnPantalla.textContent = saldo;
+                abrirPack(nuevoFondo, "fondo",true);
+            }
+        } 
+    }
+}*/

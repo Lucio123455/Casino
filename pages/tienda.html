@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <link rel="stylesheet" href="../estilos/stylesTienda.css">
+</head>
+<body>
+    <header>
+        <h1>¡Bienvenido a la Tienda!</h1>
+    </header>
+
+    <div id="packContainer">
+        <div id="prizeMessage"></div>
+        <img src="" alt="" id="fondoGanado">
+        <video src="" autoplay loop muted id="fondoGanadoVideo">
+            <source src="" type="video/mp4">
+        </video>
+        <button id="closeButton" onclick="cerrarPack()">Cerrar</button>
+    </div>
+
+    <div id="saldo">
+        <p>Saldo: <span id="valorSaldo"></span></p>
+    </div>
+    <section class="packs-container">
+        <div class="pack">
+            <article>
+                <img src="../img/fondos-de-pantalla-de-mario-bros-4k-celular-9.jpg" alt="">
+                <img src="../img/luigi.png" alt="">
+            </article>
+
+            <h2>Pack Básico</h2>
+            <p>$500</p>
+            <p>Este pack contiene todo lo que necesitas para comenzar tu colección, puedes encontrar fondos, canciones, y saldo!!!</p>
+            <button onclick="comprarPackBasico()">Comprar</button>
+        </div>
+
+        <div class="pack">
+            <article>
+                
+            </article>
+            <h2>Pack 2</h2>
+            <p>Descripción del Pack 2</p>
+            <button onclick="comprarPackEspecial()">Comprar</button>
+        </div>
+
+        <div class="pack">
+            <h2>Pack 3</h2>
+            <p>Descripción del Pack 3</p>
+            <button onclick="comprarPackLegendario()">Comprar</button>
+        </div>
+
+        
+    </section>
+
+    
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

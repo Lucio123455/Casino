@@ -1,0 +1,132 @@
+
+{ 
+ "fondos" :[
+    {
+        "url": "fondo_0.jpg",
+        "nombre": "Casino",
+        "descripcion": ".",
+        "tipo": "img",
+        "rareza" : "comun",
+        "numero" : "1",
+        "probabilidad": 0.1
+    },
+    {
+        "url": "fondo_1.jpg",
+        "nombre": "Casino Rosado",
+        "descripcion": ".",
+        "tipo": "img",
+        "rareza" : "comun",
+        "numero" : "2",
+        "probabilidad": 0.05
+    },
+    {
+        "url": "fondo_2.jpg",
+        "nombre": "Maquinitas",
+        "descripcion": ".",
+        "tipo": "img",
+        "rareza" : "comun",
+        "numero" : "3",
+        "probabilidad": 0.08
+    },
+    {
+        "url": "fondo_3.jpg",
+        "nombre": "Maquinas tragaperras",
+        "descripcion": "Playa tropical",
+        "tipo": "img",
+        "rareza" : "comun",
+        "numero" : "4",
+        "probabilidad": 0.12
+    },
+    {
+        "url": "fondo_4.jpg",
+        "nombre": "Clasico",
+        "descripcion": "Montañas nevadas",
+        "tipo": "img",
+        "rareza" : "especial",
+        "probabilidad": 0.15
+    },
+    {
+        "url": "fondo_5.jpg",
+        "nombre": "Hipodromo de palermo",
+        "descripcion": "Atardecer en el desierto",
+        "tipo": "img",
+        "rareza" : "especial",
+        "probabilidad": 0.07
+    },
+    {
+        "url": "fondo_6.jpg",
+        "nombre": "Fondo rojo",
+        "descripcion": "Bosque encantado",
+        "tipo": "img",
+        "numero" : "1",
+        "rareza" : "basico",
+        "probabilidad": 0.1
+    },
+    {
+        "url": "fondo_7.jpg",
+        "nombre": "Fondo verde",
+        "descripcion": "Ciudad futurista",
+        "tipo": "img",
+        "numero" : "2",
+        "rareza" : "basico",
+        "probabilidad": 0.03
+    },
+    {
+        "url": "fondo_8.jpg",
+        "nombre": "Fondo gris",
+        "descripcion": "Cascada majestuosa",
+        "tipo": "img",
+        "numero" : "3",
+        "rareza" : "basico",
+        "probabilidad": 0.1
+    },
+    {
+        "url": "fondo_9.jpg",
+        "nombre": "Spider-man basketbolista",
+        "descripcion": "Vía láctea en el cielo",
+        "tipo": "video",
+        "rareza" : "epico",
+        "probabilidad": 0.09
+    },
+    {
+        "url": "fondo_10.jpg",
+        "nombre": "Selvatico",
+        "descripcion": "Ciudad medieval",
+        "tipo": "video",
+        "rareza" : "epico",
+        "probabilidad": 0.04
+    },
+    {
+        "url": "fondo_11.jpg",
+        "nombre": "Gato en la ciudad",
+        "descripcion": "Campos de lavanda",
+        "tipo": "video",
+        "rareza" : "epico",
+        "probabilidad": 0.11
+    },
+    {
+        "url": "fondo_12.jpg",
+        "nombre": "Astronauta desconocido",
+        "descripcion": "Nebulosa en el espacio",
+        "tipo": "video",
+        "rareza" : "mitico",
+        "probabilidad": 0.06
+    },
+    {
+        "url": "fondo_13.jpg",
+        "nombre": "Luigi bailando en el casino",
+        "descripcion": "Arquitectura antigua",
+        "tipo": "video",
+        "rareza" : "legendario",
+        "probabilidad": 0.02
+    },
+    {
+        "url": "fondo_14.jpg",
+        "nombre": "Ciudad",
+        "descripcion": "Selva tropical",
+        "tipo": "video",
+        "rareza" : "epico",
+        "probabilidad": 0.13
+    }
+]
+}

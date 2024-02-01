@@ -1,0 +1,203 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1e24;
+    color: #ffd700;
+}
+
+header {
+    background-color: #1a1e24;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.packs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.pack {
+    background-color: #2c3039;
+    border: 2px solid #ffd700;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+button {
+    background-color: #ffd700;
+    border: none;
+    color: #1a1e24;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #e6b800;
+}
+
+footer {
+    background-color: #1a1e24;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+#saldo {
+    font-weight: bold;
+    font-size: 18px;
+    color: #e6b800;
+}
+
+article {
+    position: relative;
+    width: 250px;
+    transition: all .3s ease;
+}
+
+article img:first-child {
+    box-shadow: 0 60px 60px
+    -60px rgba(0, 30, 255, 0.5);
+    border-radius: 4px;
+    object-fit: cover;
+    width: 100%;
+}
+
+article img:last-child {
+    position: absolute;
+    width: 200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(25%);
+    transition: .3s ease;
+    opacity: 0;
+}
+
+article:hover {
+    transform: perspective(250px) rotatex(10deg)
+    translateY(-5%) translateZ(0);
+    
+}
+
+article::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%; 
+    background-image: linear-gradient(
+        to bottom,
+        transparent 10%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0,0,0) 95%
+    );
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+article:hover::before {
+    opacity: 1;
+}
+
+article:hover img:last-child {
+    opacity: 1;
+    transform: translateY(10%);
+}
+
+#packContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 300px;
+    background: url('../img/pack.jpg') center/cover no-repeat; /* Agrega tu ruta de imagen */
+
+    border: 2px solid #ccc;
+    overflow: hidden;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#fondoGanado {
+    border: 2px solid #000;
+    display: block;
+    margin: 10px auto; 
+    max-width: 100%;
+    height: auto;
+    max-height: 100px;
+    position: relative; /* Agrega esta línea para permitir el posicionamiento relativo */
+    top: 10px; /* Ajusta la posición vertical según tus necesidades */
+}
+
+
+#packContainer.abierto {
+    width: 400px;
+    height: 600px;
+    opacity: 1;
+}
+
+#prizeMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #008000;
+    display: none;
+}
+
+#packContainer.abierto #prizeMessage {
+    display: block;
+}
+
+#closeButton {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    display: none;
+    transition: display 0.5s ease;
+}
+
+#packContainer.abierto #closeButton {
+    display: block;
+}
+
+#coleccion {
+    display: flex;
+    overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si las imágenes son más anchas que el contenedor */
+}
+
+.fondoDelUsuario {
+    width: 80px; /* Ajusta el ancho de las imágenes según tus preferencias */
+    height: auto; /* Hace que la altura se ajuste automáticamente para mantener la proporción de la imagen */
+    margin-right: 10px; /* Agrega un margen a la derecha de cada imagen para separarlas */
+}
+
+#fondoGanadoUsuario {
+    width: 80px; /* Ajusta el ancho de las imágenes según tus preferencias */
+    height: auto; /* Hace que la altura se ajuste automáticamente para mantener la proporción de la imagen */
+    margin-right: 10px; /* Agrega un margen a la derecha de cada imagen para separarlas */
+}

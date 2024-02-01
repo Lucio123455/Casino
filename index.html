@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackjack</title>
     <link rel="stylesheet" href="./estilos/styles.css">
 </head>
+
 <body>
     
-    <img src="https://imagenesyogonet.b-cdn.net/data/imagenes/2022/10/17/49871/1666014407-igt-oyo-hotel-casino-las-vegas-wheel-fortune-zona-tragamonedas-02.jpg" alt="" id="background-img">
+    
+    <img src=""
+        alt="" id="background-img">
+    
+        <video id="background-video" autoplay loop muted>
+            
+        </video>
+
     <div id="container">
         <div id="inicio">
             <h1>¡Bienvenido a Blackjack!</h1>
-            <button id="mostrarInstrucciones" onclick="mostrarInstruccionesDesdeElJuego();"><img src="./img/question.png" alt=""></button>
+            <button id="mostrarInstrucciones" onclick="mostrarInstruccionesDesdeElJuego();"><img
+                    src="./img/question.png" alt="">
+            </button>
+            <button id="toggleMusica">
+                <a href="./pages/tienda.html">
+                    <img id="carrito" src="img/carrito.png" alt="">
+                </a>
+            </button>
+            <button id="toggleMusica" onclick="toggleMusica()">
+                <img id="iconoMusica" src="img/audio.png" alt="Icono de audio">
+            </button>
+            <button id="botonColeccion" onclick="mostrarColeccion()">
+                <img id="coleccionImg" src="img/coleccion.png" alt="Icono de coleccion">
+            </button>
         </div>
         <div id="botones-container">
             <button id="jugarPartida" onclick="jugarPartida();">Jugar Partida</button>
             <button id="recargar" onclick="recargarSaldo();">Recargar Saldo</button>
-            <button id="apostar" onmousedown="iniciarApostar();" onmouseup="detenerApostar();" onmouseleave="detenerApostar();">Apostar</button>
+            <button id="apostar" onmousedown="iniciarApostar();" onmouseup="detenerApostar();"
+                onmouseleave="detenerApostar();">Apostar</button>
+                <select id="seleccionApuesta" onchange="cambiarApuesta()">
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                    <option value="10000">10000</option>
+                    <option value="100000">100000</option>
+                </select>
             <button id="borrarApuesta" onclick="borrarApuesta();">Restablecer apuesta</button>
         </div>
         <div id="info-container">
@@ -49,7 +80,8 @@
                 <ol>
                     <li><strong>Objetivo:</strong> Obtener una mano con un valor cercano a 21 sin pasarse.</li>
                     <br>
-                    <li><strong>Cartas:</strong> Las cartas numéricas valen su valor, las figuras (J, Q, K) valen 10 y los Ases pueden valer 1 u 11.</li>
+                    <li><strong>Cartas:</strong> Las cartas numéricas valen su valor, las figuras (J, Q, K) valen 10 y
+                        los Ases pueden valer 1 u 11.</li>
                     <br>
                     <li><strong>Desarrollo del Juego:</strong>
                         <ul>
@@ -75,14 +107,22 @@
             </div>
         </div>
     </div>
+    
+    <section id="coleccion">
+        
+    </section>
+    
+    
     <audio id="sonido_apuesta" src="sonidos/sonido_apuesta.mp3"></audio>
-    <audio id="musica_fondo" src="sonidos/musica_casino.mp3"></audio>
     <audio id="ganar_sonido" src="sonidos/ganar_sonido.mp3"></audio>
     <audio id="sonido_cartas" src="sonidos/cartas.mp3"></audio>
     <audio id="sonido_cartas_comienzo" src="sonidos/cartas_comienzo.mp3"></audio>
     <audio id="game_over" src="sonidos/game_over.mp3"></audio>
 
+    <audio id="musica_fondo" src="sonidos/musica_luigi.mp3"></audio>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/main.js"></script>
 </body>
+
 </html>
