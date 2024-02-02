@@ -180,8 +180,6 @@ function abrirPack(premio, tipo, esVideo) {
 
     const packCentral = document.getElementById('pack_central')
     packCentral.style.display = 'none'
-    location.reload();
-
 }
 
 function comprobarSiYaExiste(fondo) {
@@ -350,6 +348,7 @@ function cerrarPack() {
 
     const packCentral = document.getElementById('pack_central')
     packCentral.style.display = 'block'
+    location.reload();
 }
 
 const coleccionContainer = document.getElementById('coleccion');
