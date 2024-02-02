@@ -9,6 +9,10 @@
 <body>
     <header>
         <h1>¡Bienvenido a la Tienda!</h1>
+        
+    <!-- Agrega esto a tu HTML -->
+
+
     </header>
 
     <div id="packContainer">
@@ -23,37 +27,50 @@
     <div id="saldo">
         <p>Saldo: <span id="valorSaldo"></span></p>
     </div>
+
+    <div id="cuadroInstrucciones">
+        
+        <p>Aquí puedes comprar diferentes packs para mejorar tu colección de fondos, los cuales puedes cambiar desde el juego principal.</p>
+        <p> Explora las opciones y diviértete.</p>
+        
+    </div>
     <section class="packs-container">
         <div class="pack">
             <article>
-                <img src="../img/fondos-de-pantalla-de-mario-bros-4k-celular-9.jpg" alt="">
-                <img src="../img/luigi.png" alt="">
+                <img src="../img/fondo_predeterminado.jpg" alt="">
+                <img src="../img/monedas.png" alt="">
             </article>
-
+    
             <h2>Pack Básico</h2>
             <p>$500</p>
-            <p>Este pack contiene todo lo que necesitas para comenzar tu colección, puedes encontrar fondos, canciones, y saldo!!!</p>
+            <p>Este pack contiene todo lo que necesitas para comenzar tu colección, incluyendo fondos exclusivos y un saldo inicial para que disfrutes al máximo.</p>
             <button onclick="comprarPackBasico()">Comprar</button>
         </div>
-
+    
         <div class="pack">
-            <article>
-                
+            <article id="pack_central">
+                <img src="../img/fondo_one_piece.jpg" alt="">
+                <img src="../img/tesoro.png" alt="">
             </article>
-            <h2>Pack 2</h2>
-            <p>Descripción del Pack 2</p>
+            <h2>Pack Especial</h2>
+            <p>$10000</p>
+            <p>Sumérgete en la aventura con el Pack 2, que incluye fondos especiales y tesoros ocultos. ¡Una experiencia única para expandir tu colección!</p>
             <button onclick="comprarPackEspecial()">Comprar</button>
         </div>
-
+    
         <div class="pack">
-            <h2>Pack 3</h2>
-            <p>Descripción del Pack 3</p>
+            <article>
+                <img src="../img/Fondo_luigi.jpg" alt="">
+                <img src="../img/luigi.png" alt="">
+            </article>
+            
+            <h2>Pack legendario</h2>
+            <p>$50000</p>
+            <p>El Pack 3 te ofrece una colección legendaria con fondos exclusivos de Luigi y elementos sorprendentes. ¡Hazte con este pack para llevar tu colección al siguiente nivel!</p>
             <button onclick="comprarPackLegendario()">Comprar</button>
         </div>
-
-        
     </section>
-
+    
     
 
     <script src="../js/main.js"></script>

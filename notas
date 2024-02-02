@@ -113,3 +113,53 @@ function comprarPackLegendario() {
         } 
     }
 }*/
+
+/*function obtenerFondoPorRareza(rareza) {
+    const numeroFondoComun = (Math.floor(Math.random() * 3) + 1).toString(); // Generar un número aleatorio del 1 al 3 y convertir a cadena
+
+    return fetch("http://localhost:8080/data/fondos.json")
+        .then(response => response.json())
+        .then(data => { 
+            const fondos = data.fondos;
+            for (let i = 0; i < fondos.length; i++) {
+                if (fondos[i].rareza === rareza && fondos[i].numero === numeroFondoComun) {
+                    return fondos[i].url;
+                }
+            }
+
+            throw new Error(`No se encontró un fondo común de rareza ${rareza} con el número ${numeroFondoComun}`);
+        });
+    
+}*/
+
+/*function cambiarFondoPorNombre(nombreFondo) {
+    fetch("http://localhost:8080/data/fondos.json")
+        .then(response => response.json())
+        .then(data => {
+            const fondos = data.fondos;
+
+            for (const fondo of fondos) {
+                if (fondo.nombre.toLowerCase() === nombreFondo.toLowerCase()) {
+                    if (fondo.tipo === 'img') {
+                        // Cambiar la imagen de fondo si el tipo es 'img'
+                        document.getElementById('background-img').src = `imagenes_fondo/${fondo.url}`;
+                        alert(`Fondo de imagen cambiado a: ${fondo.nombre}`);
+                    } else if (fondo.tipo === 'video') {
+                        // Puedes agregar lógica para reproducir el video si el tipo es 'video'
+                        alert(`Fondo de video encontrado: ${fondo.nombre}`);
+                    } else {
+                        // Manejar otros tipos de fondo si es necesario
+                        alert(`Fondo de tipo desconocido encontrado: ${fondo.nombre}`);
+                    }
+
+                    return; // Salir de la función después de cambiar el fondo
+                }
+            }
+
+            alert('Fondo no encontrado');
+        })
+        .catch(error => {
+            console.error('Error al cargar los fondos:', error);
+            alert('Error al cargar los fondos. Por favor, inténtalo nuevamente.');
+        });
+}*/

@@ -10,8 +10,25 @@ header {
     background-color: #1a1e24;
     padding: 20px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+}
+#mostrarInstruccionesTienda {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
 }
 
+#mostrarInstruccionesTienda img {
+    width: 50px; /* Ajusta el ancho según tus necesidades */
+    height: auto; /* Ajusta la altura según tus necesidades */
+}
+#cuadroInstrucciones {
+    display: flex;
+    justify-content: center;
+}
 header h1 {
     margin: 0;
 }
@@ -60,11 +77,12 @@ footer p {
     font-weight: bold;
     font-size: 18px;
     color: #e6b800;
+    text-align: center;
 }
 
 article {
     position: relative;
-    width: 250px;
+    width: 100%;
     transition: all .3s ease;
 }
 
