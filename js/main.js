@@ -335,8 +335,6 @@ async function comprarPackLegendario() {
     }
 }
 
-
-
 function cerrarPack() {
     const packContainer = document.getElementById('packContainer');
     const imagenFondo = document.getElementById('fondoGanado')
@@ -380,6 +378,7 @@ function mostrarFondosDelUsuario() {
 
         coleccionContainer.appendChild(elementoFondo);
     }
+    location.reload();
 }
 
 function cambiarFondo(nuevoFondo) {
