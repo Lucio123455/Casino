@@ -115,8 +115,8 @@ function restarSaldo() {
 
 // PACKS 
 
-let fondosDelUsuario = JSON.parse(localStorage.getItem('fondosDelUsuario')) || ['fondo_predeterminado.jpg'];
-let contadorDeFondos = JSON.parse(localStorage.getItem('contadorDeFondos')) || 1;
+let fondosDelUsuario = JSON.parse(localStorage.getItem('fondosDelUsuario')) || ['fondo_predeterminado.jpg','fondo_11_V.mp4'];
+let contadorDeFondos = JSON.parse(localStorage.getItem('contadorDeFondos')) || 2;
 
 guardarEnLocalStorageLosFondos()
 
@@ -144,7 +144,7 @@ async function obtenerFondoPorRareza(rareza) {
     }
 }
 
-console.log(obtenerFondoPorRareza('basico')) 
+
 
 
 function abrirPack(premio, tipo, esVideo) {
@@ -753,7 +753,7 @@ function cerrarColeccion(){
 }
 
 //INSTRUCCIONES TIENDA
-
+actualizarSaldo(saldo)
 mostrarFondosDelUsuario();
 document.addEventListener('DOMContentLoaded', function () {
     const fondoActual = localStorage.getItem('fondoActual');
