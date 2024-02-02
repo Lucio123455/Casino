@@ -94,6 +94,7 @@ function apostar() {
         apuestaEnPantalla.textContent = apuesta;
         sonidoApuesta.play();
         restarSaldo();
+        actualizarSaldo(saldo)
     }
 }
 
@@ -143,9 +144,6 @@ async function obtenerFondoPorRareza(rareza) {
         throw new Error('Error al obtener fondo por rareza');
     }
 }
-
-
-
 
 function abrirPack(premio, tipo, esVideo) {
     const packContainer = document.getElementById('packContainer');
@@ -378,7 +376,7 @@ function mostrarFondosDelUsuario() {
 
         coleccionContainer.appendChild(elementoFondo);
     }
-    location.reload();
+    
 }
 
 function cambiarFondo(nuevoFondo) {
