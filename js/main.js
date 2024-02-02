@@ -1,170 +1,3 @@
-const fondos = [
-    {
-        "url": "fondo_0.jpg",
-        "nombre": "Casino",
-        "descripcion": ".",
-        "tipo": "img",
-        "rareza" : "especial",
-        "numero" : "1",
-        "probabilidad": 0.1
-    },
-    {
-        "url": "fondo_1.jpg",
-        "nombre": "Casino Rosado",
-        "descripcion": ".",
-        "tipo": "img",
-        "rareza" : "especial",
-        "numero" : "2",
-        "probabilidad": 0.05
-    },
-    {
-        "url": "fondo_2.jpg",
-        "nombre": "Maquinitas",
-        "descripcion": ".",
-        "tipo": "img",
-        "rareza" : "especial",
-        "numero" : "3",
-        "probabilidad": 0.08
-    },
-    {
-        "url": "fondo_3.jpg",
-        "nombre": "Maquinas tragaperras",
-        "descripcion": "",
-        "tipo": "img",
-        "rareza" : "epico",
-        "numero" : "1",
-        "probabilidad": 0.12
-    },
-    {
-        "url": "fondo_4.jpg",
-        "nombre": "Clasico",
-        "descripcion": "",
-        "tipo": "img",
-        "rareza" : "epico",
-        "numero" : "2",
-        "probabilidad": 0.15
-    },
-    {
-        "url": "fondo_5.jpg",
-        "nombre": "Hipodromo de palermo",
-        "descripcion": "",
-        "tipo": "img",
-        "rareza" : "epico",
-        "numero" : "3",
-        "probabilidad": 0.07
-    },
-    {
-        "url": "fondo_6.jpg",
-        "nombre": "Fondo rojo",
-        "descripcion": "Bosque encantado",
-        "tipo": "img",
-        "numero" : "1",
-        "rareza" : "basico",
-        "probabilidad": 0.1
-    },
-    {
-        "url": "fondo_7.jpg",
-        "nombre": "Fondo verde",
-        "descripcion": "Ciudad futurista",
-        "tipo": "img",
-        "numero" : "2",
-        "rareza" : "basico",
-        "probabilidad": 0.03
-    },
-    {
-        "url": "fondo_8.jpg",
-        "nombre": "Fondo gris",
-        "descripcion": "Cascada majestuosa",
-        "tipo": "img",
-        "numero" : "3",
-        "rareza" : "basico",
-        "probabilidad": 0.1
-    },
-    {
-        "url": "fondo_9_V.mp4",
-        "nombre": "Spider-man basketbolista",
-        "descripcion": "Miles morales",
-        "tipo": "video",
-        "rareza" : "mitico",
-        "numero" : "3",
-        "probabilidad": 0.09
-    },
-    {
-        "url": "fondo_10_V.mp4",
-        "nombre": "Selvatico",
-        "descripcion": "Un jungla indescriptible",
-        "tipo": "video",
-        "rareza" : "mitico",
-        "numero" : "2",
-        "probabilidad": 0.04
-    },
-    {
-        "url": "fondo_11_V.mp4",
-        "nombre": "Gato en la ciudad",
-        "descripcion": "Un lindo gato en una linda ciudad",
-        "tipo": "video",
-        "rareza" : "legendario",
-        "numero" : "3",
-        "probabilidad": 0.11
-    },
-    {
-        "url": "fondo_12_V.mp4",
-        "nombre": "Astronauta desconocido",
-        "descripcion": "Nebulosa en el espacio",
-        "tipo": "video",
-        "rareza" : "legendario",
-        "numero" : "1",
-        "probabilidad": 0.06
-    },
-    {
-        "url": "fondo_13_V.mp4",
-        "nombre": "Luigi bailando en el casino",
-        "descripcion": "Luigi's casino game",
-        "tipo": "video",
-        "rareza" : "legendario",
-        "numero" : "2",
-        "probabilidad": 0.02
-    },
-    {
-        "url": "fondo_14_V.mp4",
-        "nombre": "Ciudad",
-        "descripcion": "Un hermosa ciudad",
-        "tipo": "video",
-        "rareza" : "mitico",
-        "numero" : "1",
-        "probabilidad": 0.13
-    },
-    {
-        "url": "fondo_15.jpg",
-        "nombre": "Casino retro",
-        "descripcion": "",
-        "tipo": "img",
-        "rareza" : "comun",
-        "numero" : "1",
-        "probabilidad": 0.13
-    },
-    {
-        "url": "fondo_16.jpg",
-        "nombre": "Fichas",
-        "descripcion": "",
-        "tipo": "img",
-        "rareza" : "comun",
-        "numero" : "2",
-        "probabilidad": 0.13
-    },
-    {
-        "url": "fondo_17.jpg",
-        "nombre": "Ciudad",
-        "descripcion": "",
-        "tipo": "img",
-        "rareza" : "comun",
-        "numero" : "3",
-        "probabilidad": 0.13
-    }
-];
-
-/*hola*/
-
 //Variables globales del blackJack
 const NUMERO_MAXIMO = 21
 const RONDAS_NECESARIAS_PARA_COMENZAR = 2
@@ -213,7 +46,7 @@ for (let i = 0; i < cartas.length; i++) {
 function mostrarCartaJugadorImg(indice) {
     let carta = document.createElement('img');
     carta.src = cartas[indice].imagen;
-    carta.classList.add('flip'); // Agregar la clase para activar la animación
+    carta.classList.add('flip'); 
     document.getElementById('cartasJugador').appendChild(carta);
     sonidoCartas.play()
 }
@@ -292,18 +125,27 @@ function guardarEnLocalStorageLosFondos() {
     localStorage.setItem('contadorDeFondos', JSON.stringify(contadorDeFondos));
 }
 
-
-function obtenerFondoPorRareza(rareza) {
+async function obtenerFondoPorRareza(rareza) {
     const numeroFondoComun = (Math.floor(Math.random() * 3) + 1).toString();
 
-    for (let i = 0; i < fondos.length; i++) {
-        if (fondos[i].rareza === rareza && fondos[i].numero === numeroFondoComun) {
-            return fondos[i].url;
+    try {
+        const response = await fetch('../data/fondos.json');
+        const fondos = await response.json();
+       
+        for (let i = 0; i < fondos.length; i++) {
+            if (fondos[i].rareza === rareza && fondos[i].numero === numeroFondoComun) {
+                return fondos[i].url;
+            }
         }
+        
+    } catch (error) {
+        console.error(error);
+        throw new Error('Error al obtener fondo por rareza');
     }
-
-    throw new Error(`No se encontró un fondo común de rareza ${rareza} con el número ${numeroFondoComun}`);
 }
+
+console.log(obtenerFondoPorRareza('basico')) 
+
 
 function abrirPack(premio, tipo, esVideo) {
     const packContainer = document.getElementById('packContainer');
@@ -323,18 +165,16 @@ function abrirPack(premio, tipo, esVideo) {
 
         if (esVideo === true) {
             videoFondo.src = `../imagenes_fondo/${premio}`;
-            videoFondo.load();  // Asegúrate de cargar el nuevo video
+            videoFondo.load();  
         }
     } else if (tipo === "fondoRepetido") {
         prizeMessage.textContent = `Ganaste un fondo que ya tienes!!! te devolveremos ${valorDeFondoRepetido}`;
         imagenFondo.src = `../imagenes_fondo/${premio}`;
         if (esVideo === true) {
             videoFondo.src = `../imagenes_fondo/${premio}`;
-            videoFondo.load();  // Asegúrate de cargar el nuevo video
+            videoFondo.load(); 
         }
     }
-
-    // Mostrar el contenedor y agregar clase para activar animaciones
     packContainer.style.display = 'block';
     packContainer.classList.add('abierto');
 
@@ -354,58 +194,53 @@ function comprobarSiYaExiste(fondo) {
     return existe
 }
 
-function comprarPackBasico() {
+async function comprarPackBasico() {
     const valorDelPack = 500;
 
     if (saldo >= valorDelPack) {
         saldo -= valorDelPack;
-        actualizarSaldo(saldo,"saldo");
+        actualizarSaldo(saldo);
         saldoEnPantalla.textContent = saldo;
 
         const probabilidad = Math.random() * 1000;
 
         if (probabilidad <= 200) {
-            // 20% de probabilidad de ganar 300
             saldo += 1000;
             saldoEnPantalla.textContent = saldo;
-            abrirPack(1000,"saldo")
+            actualizarSaldo(saldo);
+            abrirPack(1000, "saldo");
+
+        } else {
             
-        } else if(probabilidad <= 900){
-            // 50% de probabilidad de obtener un fondo
-            let nuevoFondo = obtenerFondoPorRareza("basico")
+            try {
+                let rareza = probabilidad <= 900 ? "basico" : "comun";
+                let nuevoFondo = await obtenerFondoPorRareza(rareza);
+
                 if (!comprobarSiYaExiste(nuevoFondo)) {
                     fondosDelUsuario.push(nuevoFondo);
                     contadorDeFondos++;
                     guardarEnLocalStorageLosFondos();
-                    abrirPack(nuevoFondo,"fondo")
-            } else {
-                    saldo += 250;
+                    abrirPack(nuevoFondo, "fondo");
+                } else {
+                    saldo += 300;
                     saldoEnPantalla.textContent = saldo;
-                    abrirPack(nuevoFondo,"fondoRepetido")
-            }
-        } else if(probabilidad <= 1000){
-            // 50% de probabilidad de obtener un fondo
-            let nuevoFondo = obtenerFondoPorRareza("comun")
-                if (!comprobarSiYaExiste(nuevoFondo)) {
-                    fondosDelUsuario.push(nuevoFondo);
-                    contadorDeFondos++;
-                    guardarEnLocalStorageLosFondos();
-                    abrirPack(nuevoFondo,"fondo")
-            } else {
-                    saldo += 250;
-                    saldoEnPantalla.textContent = saldo;
-                    abrirPack(nuevoFondo,"fondoRepetido")
+                    actualizarSaldo(saldo);
+                    abrirPack(nuevoFondo, "fondoRepetido");
+                }
+            } catch (error) {
+                console.error(error);
             }
         }
     }
 }
 
-function comprarPackEspecial() {
+
+async function comprarPackEspecial() {
     const valorDelPack = 10000;
 
     if (saldo >= valorDelPack) {
         saldo -= valorDelPack;
-        actualizarSaldo(saldo, "saldo");
+        actualizarSaldo(saldo);
         saldoEnPantalla.textContent = saldo;
 
         const probabilidad = Math.random() * 1000;
@@ -414,192 +249,126 @@ function comprarPackEspecial() {
             saldo += 50000;
             saldoEnPantalla.textContent = saldo;
             abrirPack(50000, "saldo");
-        } else if (probabilidad <= 300) {
-            let nuevoFondo = obtenerFondoPorRareza("basico");
-            if (!comprobarSiYaExiste(nuevoFondo)) {
-                fondosDelUsuario.push(nuevoFondo);
-                contadorDeFondos++;
-                guardarEnLocalStorageLosFondos();
-                abrirPack(nuevoFondo, "fondo");
-            } else {
-                saldo += 300;
-                saldoEnPantalla.textContent = saldo;
-                abrirPack(nuevoFondo, "fondoRepetido");
+        } else {
+            try {
+                let rareza;
+                if (probabilidad <= 300) {
+                    rareza = "basico";
+                } else if (probabilidad <= 500) {
+                    rareza = "comun";
+                } else if (probabilidad <= 900) {
+                    rareza = "especial";
+                } else if (probabilidad <= 990) {
+                    rareza = "epico";
+                } else {
+                    rareza = probabilidad <= 1000 ? "mitico" : "basico";
+                }
+
+                let nuevoFondo = await obtenerFondoPorRareza(rareza);
+
+                if (!comprobarSiYaExiste(nuevoFondo)) {
+                    fondosDelUsuario.push(nuevoFondo);
+                    contadorDeFondos++;
+                    guardarEnLocalStorageLosFondos();
+                    abrirPack(nuevoFondo, "fondo");
+                } else {
+                    saldo += 300;
+                    saldoEnPantalla.textContent = saldo;
+                    actualizarSaldo(saldo);
+                    abrirPack(nuevoFondo, "fondoRepetido");
+                }
+            } catch (error) {
+                console.error(error);
             }
-        } else if (probabilidad <= 500) {
-            let nuevoFondo = obtenerFondoPorRareza("comun");
-            if (!comprobarSiYaExiste(nuevoFondo)) {
-                fondosDelUsuario.push(nuevoFondo);
-                contadorDeFondos++;
-                guardarEnLocalStorageLosFondos();
-                abrirPack(nuevoFondo, "fondo");
-            } else {
-                saldo += 300;
-                saldoEnPantalla.textContent = saldo;
-                abrirPack(nuevoFondo, "fondoRepetido");
-            }
-        } else if (probabilidad <= 900) {
-            let nuevoFondo = obtenerFondoPorRareza("especial");
-            if (!comprobarSiYaExiste(nuevoFondo)) {
-                fondosDelUsuario.push(nuevoFondo);
-                contadorDeFondos++;
-                guardarEnLocalStorageLosFondos();
-                abrirPack(nuevoFondo, "fondo");
-            } else {
-                saldo += 300;
-                saldoEnPantalla.textContent = saldo;
-                abrirPack(nuevoFondo, "fondoRepetido");
-            }
-        } else if (probabilidad <= 990) {
-            let nuevoFondo = obtenerFondoPorRareza("epico");
-            if (!comprobarSiYaExiste(nuevoFondo)) {
-                fondosDelUsuario.push(nuevoFondo);
-                contadorDeFondos++;
-                guardarEnLocalStorageLosFondos();
-                abrirPack(nuevoFondo, "fondo");
-            } else {
-                saldo += 300;
-                saldoEnPantalla.textContent = saldo;
-                abrirPack(nuevoFondo, "fondoRepetido");
-            }
-        } 
-        else if (probabilidad <= 1000) {
-            let nuevoFondo = obtenerFondoPorRareza("mitico");
-            if (!comprobarSiYaExiste(nuevoFondo)) {
-                fondosDelUsuario.push(nuevoFondo);
-                contadorDeFondos++;
-                guardarEnLocalStorageLosFondos();
-                abrirPack(nuevoFondo, "fondo");
-            } else {
-                saldo += 300;
-                saldoEnPantalla.textContent = saldo;
-                abrirPack(nuevoFondo, "fondoRepetido");
-            }
-        } 
+        }
     }
 }
 
-function comprarPackLegendario() {
+
+async function comprarPackLegendario() {
     const valorDelPack = 50000;
 
     if (saldo >= valorDelPack) {
         saldo -= valorDelPack;
-        actualizarSaldo(saldo, "saldo");
+        actualizarSaldo(saldo);
         saldoEnPantalla.textContent = saldo;
 
         const probabilidad = Math.random() * 1000;
 
         if (probabilidad <= 200) {
-            saldo += 500000;
+            saldo += 100000;
             saldoEnPantalla.textContent = saldo;
-            abrirPack(500000, "saldo");
-        } else if (probabilidad <= 250) {
-            let nuevoFondo = obtenerFondoPorRareza("comun");
-            if (!comprobarSiYaExiste(nuevoFondo)) {
-                fondosDelUsuario.push(nuevoFondo);
-                contadorDeFondos++;
-                guardarEnLocalStorageLosFondos();
-                abrirPack(nuevoFondo, "fondo",true);
-            } else {
-                saldo += 300;
-                saldoEnPantalla.textContent = saldo;
-                abrirPack(nuevoFondo, "fondoRepetido",true);
+            actualizarSaldo(saldo);
+            abrirPack(100000, "saldo");
+        } else {
+            try {
+                let rareza;
+                if (probabilidad <= 250) {
+                    rareza = "comun";
+                } else if (probabilidad <= 350) {
+                    rareza = "especial";
+                } else if (probabilidad <= 700) {
+                    rareza = "epico";
+                } else if (probabilidad <= 900) {
+                    rareza = "mitico";
+                } else {
+                    rareza = probabilidad <= 1000 ? "legendario" : "comun";
+                }
+
+                let nuevoFondo = await obtenerFondoPorRareza(rareza);
+
+                if (!comprobarSiYaExiste(nuevoFondo)) {
+                    fondosDelUsuario.push(nuevoFondo);
+                    contadorDeFondos++;
+                    guardarEnLocalStorageLosFondos();
+                    abrirPack(nuevoFondo, "fondo", true);
+                } else {
+                    saldo += 300;
+                    saldoEnPantalla.textContent = saldo;
+                    actualizarSaldo(saldo);
+                    abrirPack(nuevoFondo, "fondoRepetido", true);
+                }
+            } catch (error) {
+                console.error(error);
             }
-        } else if (probabilidad <= 350) {
-            let nuevoFondo = obtenerFondoPorRareza("especial");
-            if (!comprobarSiYaExiste(nuevoFondo)) {
-                fondosDelUsuario.push(nuevoFondo);
-                contadorDeFondos++;
-                guardarEnLocalStorageLosFondos();
-                abrirPack(nuevoFondo, "fondo",true);
-            } else {
-                saldo += 300;
-                saldoEnPantalla.textContent = saldo;
-                abrirPack(nuevoFondo, "fondoRepetido",true);
-            }
-        } else if (probabilidad <= 700) {
-            let nuevoFondo = obtenerFondoPorRareza("epico");
-            if (!comprobarSiYaExiste(nuevoFondo)) {
-                fondosDelUsuario.push(nuevoFondo);
-                contadorDeFondos++;
-                guardarEnLocalStorageLosFondos();
-                abrirPack(nuevoFondo, "fondo",true);
-            } else {
-                saldo += 300;
-                saldoEnPantalla.textContent = saldo;
-                abrirPack(nuevoFondo, "fondoRepetido",true);
-            }
-        } else if (probabilidad <= 900) {
-            let nuevoFondo = obtenerFondoPorRareza("mitico");
-            if (!comprobarSiYaExiste(nuevoFondo)) {
-                fondosDelUsuario.push(nuevoFondo);
-                contadorDeFondos++;
-                guardarEnLocalStorageLosFondos();
-                abrirPack(nuevoFondo, "fondo",true);
-            } else {
-                saldo += 300;
-                saldoEnPantalla.textContent = saldo;
-                abrirPack(nuevoFondo, "fondoRepetido",true);
-            }
-        } 
-        else if (probabilidad <= 1000) {
-            let nuevoFondo = obtenerFondoPorRareza("mitico");
-            if (!comprobarSiYaExiste(nuevoFondo)) {
-                fondosDelUsuario.push(nuevoFondo);
-                contadorDeFondos++;
-                guardarEnLocalStorageLosFondos();
-                abrirPack(nuevoFondo, "fondo",true);
-            } else {
-                saldo += 300;
-                saldoEnPantalla.textContent = saldo;
-                abrirPack(nuevoFondo, "fondoRepetido",true);
-            }
-        } 
+        }
     }
 }
+
 
 
 function cerrarPack() {
     const packContainer = document.getElementById('packContainer');
     const imagenFondo = document.getElementById('fondoGanado')
     const videoFondo = document.getElementById('fondoGanadoVideo');
-    // Remover clase para desactivar animaciones
     packContainer.classList.remove('abierto');
     imagenFondo.src = '';
     videoFondo.src = '';
-    // Ocultar el contenedor en lugar de eliminar el contenido
     packContainer.style.display = 'none';
 
     const packCentral = document.getElementById('pack_central')
     packCentral.style.display = 'block'
 }
 
-// Obtén el contenedor de la colección
 const coleccionContainer = document.getElementById('coleccion');
 
-// Esta función recorre el array de fondosDelUsuario y crea elementos de imagen
 function mostrarFondosDelUsuario() {
-    coleccionContainer.innerHTML = ''; // Limpiamos el contenedor antes de agregar nuevos elementos
+    coleccionContainer.innerHTML = ''; 
 
     for (let i = 0; i < contadorDeFondos; i++) {
-        const esVideo = fondosDelUsuario[i].endsWith('.mp4'); // Cambia la extensión según tus videos
+        const esVideo = fondosDelUsuario[i].endsWith('.mp4'); 
         const elementoFondo = esVideo ? document.createElement('video') : document.createElement('img');
 
         elementoFondo.src = `./imagenes_fondo/${fondosDelUsuario[i]}`;
-        elementoFondo.alt = `Fondo ${i + 1}`; // Asegúrate de que cada elemento tenga un atributo alt único
-        elementoFondo.classList.add('fondoDelUsuario'); // Agrega una clase para aplicar estilos si es necesario
-
-        // Agrega un atributo data-fondo con el nombre del fondo
+        elementoFondo.alt = `Fondo ${i + 1}`; 
+        elementoFondo.classList.add('fondoDelUsuario');
         elementoFondo.dataset.fondo = fondosDelUsuario[i];
-
         elementoFondo.style.cursor = 'pointer';
         elementoFondo.style.transition = 'transform 0.3s ease';
-        // Agrega un evento de clic directamente a la imagen para cambiar el fondo al hacer clic
-        elementoFondo.addEventListener('click', function () {
-            // Obtiene el valor del atributo data-fondo directamente desde el elemento asociado
-            const nuevoFondo = elementoFondo.dataset.fondo;
 
-            // Llama a la función que se encarga de actualizar el fondo
+        elementoFondo.addEventListener('click', function () {
+            
+            const nuevoFondo = elementoFondo.dataset.fondo;
             cambiarFondo(nuevoFondo, esVideo);
 
             elementoFondo.style.transform = 'scale(1.1)';
@@ -608,7 +377,6 @@ function mostrarFondosDelUsuario() {
             }, 300);
         });
 
-        // Agrega el elemento de fondo al contenedor
         coleccionContainer.appendChild(elementoFondo);
     }
 }
@@ -617,8 +385,6 @@ function cambiarFondo(nuevoFondo) {
     if (revisarUltimo(nuevoFondo)) {
         const video = document.getElementById("background-video");
         const imagen = document.getElementById('background-img');
-
-        // Oculta la imagen y muestra el video
         video.style.display = 'block';
         imagen.style.display = 'none';
 
@@ -628,8 +394,6 @@ function cambiarFondo(nuevoFondo) {
     } else {
         const video = document.getElementById("background-video");
         const imagen = document.getElementById('background-img');
-
-        // Oculta el video y muestra la imagen
         video.style.display = 'none';
         imagen.style.display = 'block';
 
@@ -641,10 +405,10 @@ function cambiarFondo(nuevoFondo) {
 }
 
 function revisarUltimo(nuevoFondo) {
-    let hayUnaV = false; // Inicializa la variable en false
+    let hayUnaV = false; 
     for (let i = 0; i < nuevoFondo.length; i++) {
         if (nuevoFondo[i] === 'V') {
-            hayUnaV = true; // Corrige la asignación a la variable
+            hayUnaV = true; 
         }
     }
     return hayUnaV;
@@ -755,7 +519,6 @@ function pedirCarta() {
 async function plantarse() {
     ronda = 1;
     if (comenzoElGame === true && sumaDelJugador <= NUMERO_MAXIMO && sePlanto === false) {
-        // Mostrar la primera carta inmediatamente
         await mostrarCartaMaquinaConRetraso(indicePosicionUno, 0);
 
         sePlanto = true;
@@ -763,22 +526,18 @@ async function plantarse() {
         await mostrarSumaMaquinaDomConRetraso(sumaDeLaMaquina, cartasDeLaMaquina);
         ronda++;
 
-        // Mostrar las cartas de la máquina con retraso
         while (sumaDeLaMaquina < NUMERO_MAXIMO && sumaDeLaMaquina < sumaDelJugador) {
             let indice = repartirCarta();
             cartasDeLaMaquina[ronda] = cartas[indice].numero;
-            await mostrarCartaMaquinaConRetraso(indice, ronda * 560);  // Se aplica un retraso de 1 segundo por carta
+            await mostrarCartaMaquinaConRetraso(indice, ronda * 560); 
             sumaDeLaMaquina = sumarCartaConIndexOF(sumaDeLaMaquina, cartasDeLaMaquina, ronda);
             await mostrarSumaMaquinaDomConRetraso(sumaDeLaMaquina, cartasDeLaMaquina);
             ronda++;
         }
-
-        // Mostrar el resultado después de que todas las cartas estén visibles
         resultadoBlackJack(sumaDelJugador, sumaDeLaMaquina);
     }
 }
 
-// Función para mostrar una carta de la máquina con retraso
 async function mostrarCartaMaquinaConRetraso(indice, retraso) {
     return new Promise(resolve => {
         setTimeout(async function () {
@@ -788,13 +547,12 @@ async function mostrarCartaMaquinaConRetraso(indice, retraso) {
     });
 }
 
-// Función para mostrar la suma de la máquina con retraso
 async function mostrarSumaMaquinaDomConRetraso(suma, cartas) {
     return new Promise(resolve => {
         setTimeout(async function () {
             await mostrarSumaMaquinaDom(suma, cartas);
             resolve();
-        }, 560);  // Se aplica un retraso de 1 segundo
+        }, 560); 
     });
 }
 
@@ -961,13 +719,11 @@ let iconoMusica = document.getElementById("iconoMusica");
 
 function toggleMusica() {
     if (musicaFondo.paused) {
-        // Si la música está pausada, la reproducimos
         musicaFondo.play();
-        iconoMusica.src = "./img/pausa.png"; // Cambia el icono a pausa
+        iconoMusica.src = "./img/pausa.png";
     } else {
-        // Si la música está reproduciéndose, la pausamos
         musicaFondo.pause();
-        iconoMusica.src = "./img/audio.png"; // Cambia el icono a audio
+        iconoMusica.src = "./img/audio.png"; 
     }
 }
 
@@ -1002,7 +758,6 @@ mostrarFondosDelUsuario();
 document.addEventListener('DOMContentLoaded', function () {
     const fondoActual = localStorage.getItem('fondoActual');
     if (fondoActual) {
-        // Si hay un fondo almacenado, cárgalo
         cambiarFondo(fondoActual);
     }
 });

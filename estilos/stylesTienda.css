@@ -22,8 +22,8 @@ header {
 }
 
 #mostrarInstruccionesTienda img {
-    width: 50px; /* Ajusta el ancho según tus necesidades */
-    height: auto; /* Ajusta la altura según tus necesidades */
+    width: 50px; 
+    height: auto; 
 }
 #cuadroInstrucciones {
     display: flex;
@@ -144,7 +144,7 @@ article:hover img:last-child {
     transform: translate(-50%, -50%);
     width: 200px;
     height: 300px;
-    background: url('../img/pack.jpg') center/cover no-repeat; /* Agrega tu ruta de imagen */
+    background: url('../img/pack.jpg') center/cover no-repeat; 
 
     border: 2px solid #ccc;
     overflow: hidden;
@@ -160,8 +160,8 @@ article:hover img:last-child {
     max-width: 100%;
     height: auto;
     max-height: 100px;
-    position: relative; /* Agrega esta línea para permitir el posicionamiento relativo */
-    top: 10px; /* Ajusta la posición vertical según tus necesidades */
+    position: relative; 
+    top: 10px; 
 }
 
 
@@ -205,17 +205,17 @@ article:hover img:last-child {
 
 #coleccion {
     display: flex;
-    overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si las imágenes son más anchas que el contenedor */
+    overflow-x: auto; 
 }
 
 .fondoDelUsuario {
-    width: 80px; /* Ajusta el ancho de las imágenes según tus preferencias */
-    height: auto; /* Hace que la altura se ajuste automáticamente para mantener la proporción de la imagen */
-    margin-right: 10px; /* Agrega un margen a la derecha de cada imagen para separarlas */
+    width: 80px; 
+    height: auto; 
+    margin-right: 10px; 
 }
 
 #fondoGanadoUsuario {
-    width: 80px; /* Ajusta el ancho de las imágenes según tus preferencias */
-    height: auto; /* Hace que la altura se ajuste automáticamente para mantener la proporción de la imagen */
-    margin-right: 10px; /* Agrega un margen a la derecha de cada imagen para separarlas */
+    width: 80px; 
+    height: auto; 
+    margin-right: 10px; 
 }

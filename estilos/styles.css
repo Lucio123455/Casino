@@ -1,6 +1,5 @@
 body {
     font-family: 'Arial', sans-serif;
-    /*background-image: url(https://e7.pngegg.com/pngimages/608/195/png-transparent-free-red-poker-casino-background.png);*/
     color: white;
     text-align: center;
     margin: 0;
@@ -15,18 +14,17 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    z-index: -1; /* Para colocar la imagen detrás del contenido */
+    z-index: -1; 
 }
-
 #background-video {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ajusta el tamaño para cubrir completamente el contenedor */
+    object-fit: cover; 
     object-position: center;
-    z-index: -1; /* Para colocar la imagen detrás del contenido */
+    z-index: -1; 
 }
 
 
@@ -86,9 +84,7 @@ body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        overflow-y: auto; /* Añadir overflow-y para permitir desplazamiento vertical */
-
-        /* Otros estilos que ya tenías... */
+        overflow-y: auto; 
     }
 
     #container {
@@ -214,29 +210,29 @@ button:hover {
 #info-container {
     
     justify-content: space-around;
-    color: #fff; /* Color del texto */
-    padding: 10px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados */
+    color: #fff; 
+    padding: 10px; 
+    border-radius: 5px; 
 }
 
 #apuesta, #saldo {
-    text-align: center; /* Alineación del texto */
+    text-align: center; 
 }
 
 #apuesta p, #saldo p {
-    margin: 0; /* Elimina el margen predeterminado del párrafo */
+    margin: 0; 
 }
 
 #apuesta span, #valorSaldo {
-    font-weight: bold; /* Texto en negrita */
-    color: #ffcc00; /* Color amarillo para resaltar */
+    font-weight: bold; 
+    color: #ffcc00; 
 }
 
 
 
 @keyframes flipCard {
     0% {
-        transform: rotateY(180deg); /* Rotación inicial */
+        transform: rotateY(180deg);
         opacity: 1;
     }
     50% {
@@ -244,7 +240,7 @@ button:hover {
         opacity: 0.5;
     }
     100% {
-        transform: rotateY(0deg); /* Rotación auténtica */
+        transform: rotateY(0deg); 
         opacity: 1;
     }
 }
@@ -254,7 +250,7 @@ button:hover {
     
 }
 
-/* Aplicar la clase de animación a las imágenes */
+
 img.flip {
     animation: flipCard 1s ease-in-out;
 }
@@ -264,7 +260,7 @@ img.flip {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px; /* Ajusta el espacio interno del botón */
+    padding: 5px; 
 }
 
 #botonColeccion {
@@ -272,58 +268,58 @@ img.flip {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px; /* Ajusta el espacio interno del botón */
+    padding: 5px; 
 }
 #coleccionImg {
-    width: 45px; /* Ajusta el tamaño del icono */
-    height: auto; /* Mantiene la proporción del icono */
+    width: 45px; 
+    height: auto; 
 }
 #iconoMusica {
-    width: 45px; /* Ajusta el tamaño del icono */
-    height: auto; /* Mantiene la proporción del icono */
+    width: 45px; 
+    height: auto; 
 }
 
-/* Estilos para la lista desplegable */
+
 #seleccionApuesta {
-    padding: 8px; /* Ajusta según sea necesario */
-    font-size: 14px; /* Ajusta según sea necesario */
-    border: 2px solid #ffd700; /* Color del borde */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #1a1e24; /* Color de fondo */
-    color: #ffd700; /* Color del texto */
-    margin-right: 10px; /* Ajusta según sea necesario */
+    padding: 8px; 
+    font-size: 14px; 
+    border: 2px solid #ffd700; 
+    border-radius: 5px; 
+    background-color: #1a1e24; 
+    color: #ffd700; 
+    margin-right: 10px; 
 }
 
-/* Estilo para las opciones de la lista desplegable */
+
 #seleccionApuesta option {
-    background-color: #1a1e24; /* Color de fondo */
-    color: #ffd700; /* Color del texto */
+    background-color: #1a1e24; 
+    color: #ffd700; 
 }
 
 #carrito {
-    width: 22px; /* Ancho del botón */
-    height: 22px; /* Altura del botón */
-    padding: 3.7px; /* Espaciado interno */
-    background-color: #fede5b; /* Color de fondo */
+    width: 22px; 
+    height: 22px; 
+    padding: 3.7px; 
+    background-color: #fede5b; 
     border: 0.5px solid #df1313;
-    border-radius: 50%; /* Bordes redondeados para hacer un círculo */
+    border-radius: 50%; 
 }
 
 #carrito img {
-    width: 30px; /* Ajusta el tamaño de la imagen para que se ajuste al botón */
+    width: 30px; 
     height: 100%;
 }
 #coleccion {
     display: none;
     overflow-x: auto;
-    max-width: 100%; /* Establece un ancho máximo para la sección */
-    overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si es necesario */
+    max-width: 100%; 
+    overflow-x: auto; 
 }
 
 .fondoDelUsuario {
-    width: 80px; /* Ajusta el ancho de las imágenes según tus preferencias */
-    height: auto; /* Hace que la altura se ajuste automáticamente para mantener la proporción de la imagen */
-    margin-right: 10px; /* Agrega un margen a la derecha de cada imagen para separarlas */
-    max-width: 200px; /* Establece un ancho máximo para cada elemento */
+    width: 80px; 
+    height: auto; 
+    margin-right: 10px; 
+    max-width: 200px; 
 
 }

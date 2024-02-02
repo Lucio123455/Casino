@@ -1,12 +1,10 @@
-
-{ 
- "fondos" :[
+[
     {
         "url": "fondo_0.jpg",
         "nombre": "Casino",
         "descripcion": ".",
         "tipo": "img",
-        "rareza" : "comun",
+        "rareza" : "especial",
         "numero" : "1",
         "probabilidad": 0.1
     },
@@ -15,7 +13,7 @@
         "nombre": "Casino Rosado",
         "descripcion": ".",
         "tipo": "img",
-        "rareza" : "comun",
+        "rareza" : "especial",
         "numero" : "2",
         "probabilidad": 0.05
     },
@@ -24,33 +22,35 @@
         "nombre": "Maquinitas",
         "descripcion": ".",
         "tipo": "img",
-        "rareza" : "comun",
+        "rareza" : "especial",
         "numero" : "3",
         "probabilidad": 0.08
     },
     {
         "url": "fondo_3.jpg",
         "nombre": "Maquinas tragaperras",
-        "descripcion": "Playa tropical",
+        "descripcion": "",
         "tipo": "img",
-        "rareza" : "comun",
-        "numero" : "4",
+        "rareza" : "epico",
+        "numero" : "1",
         "probabilidad": 0.12
     },
     {
         "url": "fondo_4.jpg",
         "nombre": "Clasico",
-        "descripcion": "Montañas nevadas",
+        "descripcion": "",
         "tipo": "img",
-        "rareza" : "especial",
+        "rareza" : "epico",
+        "numero" : "2",
         "probabilidad": 0.15
     },
     {
         "url": "fondo_5.jpg",
         "nombre": "Hipodromo de palermo",
-        "descripcion": "Atardecer en el desierto",
+        "descripcion": "",
         "tipo": "img",
-        "rareza" : "especial",
+        "rareza" : "epico",
+        "numero" : "3",
         "probabilidad": 0.07
     },
     {
@@ -81,52 +81,84 @@
         "probabilidad": 0.1
     },
     {
-        "url": "fondo_9.jpg",
+        "url": "fondo_9_V.mp4",
         "nombre": "Spider-man basketbolista",
-        "descripcion": "Vía láctea en el cielo",
+        "descripcion": "Miles morales",
         "tipo": "video",
-        "rareza" : "epico",
+        "rareza" : "mitico",
+        "numero" : "3",
         "probabilidad": 0.09
     },
     {
-        "url": "fondo_10.jpg",
+        "url": "fondo_10_V.mp4",
         "nombre": "Selvatico",
-        "descripcion": "Ciudad medieval",
+        "descripcion": "Un jungla indescriptible",
         "tipo": "video",
-        "rareza" : "epico",
+        "rareza" : "mitico",
+        "numero" : "2",
         "probabilidad": 0.04
     },
     {
-        "url": "fondo_11.jpg",
+        "url": "fondo_11_V.mp4",
         "nombre": "Gato en la ciudad",
-        "descripcion": "Campos de lavanda",
+        "descripcion": "Un lindo gato en una linda ciudad",
         "tipo": "video",
-        "rareza" : "epico",
+        "rareza" : "legendario",
+        "numero" : "3",
         "probabilidad": 0.11
     },
     {
-        "url": "fondo_12.jpg",
+        "url": "fondo_12_V.mp4",
         "nombre": "Astronauta desconocido",
         "descripcion": "Nebulosa en el espacio",
         "tipo": "video",
-        "rareza" : "mitico",
+        "rareza" : "legendario",
+        "numero" : "1",
         "probabilidad": 0.06
     },
     {
-        "url": "fondo_13.jpg",
+        "url": "fondo_13_V.mp4",
         "nombre": "Luigi bailando en el casino",
-        "descripcion": "Arquitectura antigua",
+        "descripcion": "Luigi's casino game",
         "tipo": "video",
         "rareza" : "legendario",
+        "numero" : "2",
         "probabilidad": 0.02
     },
     {
-        "url": "fondo_14.jpg",
+        "url": "fondo_14_V.mp4",
         "nombre": "Ciudad",
-        "descripcion": "Selva tropical",
+        "descripcion": "Un hermosa ciudad",
         "tipo": "video",
-        "rareza" : "epico",
+        "rareza" : "mitico",
+        "numero" : "1",
+        "probabilidad": 0.13
+    },
+    {
+        "url": "fondo_15.jpg",
+        "nombre": "Casino retro",
+        "descripcion": "",
+        "tipo": "img",
+        "rareza" : "comun",
+        "numero" : "1",
+        "probabilidad": 0.13
+    },
+    {
+        "url": "fondo_16.jpg",
+        "nombre": "Fichas",
+        "descripcion": "",
+        "tipo": "img",
+        "rareza" : "comun",
+        "numero" : "2",
+        "probabilidad": 0.13
+    },
+    {
+        "url": "fondo_17.jpg",
+        "nombre": "Ciudad",
+        "descripcion": "",
+        "tipo": "img",
+        "rareza" : "comun",
+        "numero" : "3",
         "probabilidad": 0.13
     }
 ]
-}
