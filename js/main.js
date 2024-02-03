@@ -94,7 +94,6 @@ function apostar() {
         apuestaEnPantalla.textContent = apuesta;
         sonidoApuesta.play();
         restarSaldo();
-        actualizarSaldo(saldo)
     }
 }
 
