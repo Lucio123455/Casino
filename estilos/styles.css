@@ -5,6 +5,12 @@ body {
     margin: 0;
 }
 
+@media screen and (max-width: 1368px) { 
+    body {
+      zoom: 0.75; 
+    }
+  }
+
 #background-img {
     position: fixed;
     margin: 0 auto 50px;
@@ -37,7 +43,9 @@ body {
     border-radius: 10px;
     border: #ffd700 solid 3px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.5s ease; 
 }
+
 
 
 #instrucciones-container {
@@ -95,9 +103,6 @@ body {
         padding: 15px;
     }
 }
-
-
-
 
 h1 {
     color: #df1313; 
@@ -263,6 +268,16 @@ img.flip {
     padding: 5px; 
 }
 
+#cruz {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px; 
+    width: 50px;
+    position: relative;
+    right: 28px;
+}
+
 #botonColeccion {
     
     background: none;
@@ -322,4 +337,8 @@ img.flip {
     margin-right: 10px; 
     max-width: 200px; 
 
+}
+
+.cursor-oculto {
+    cursor: none;
 }

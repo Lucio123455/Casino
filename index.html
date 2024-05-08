@@ -11,16 +11,17 @@
 <body>
     
     
-    <img src="./imagenes_fondo/fondo_predeterminado.jpg"
-        alt="" id="background-img">
+    <img src="./imagenes_fondo/fondo_predeterminado.jpg" alt="" id="background-img">
     
-        <video id="background-video" autoplay loop muted>
-            
-        </video>
+        <video id="background-video" autoplay loop muted></video>
 
     <div id="container">
+        
         <div id="inicio">
-            <h1>¡Bienvenido a Blackjack!</h1>
+            <button id="cruz" onclick="cerrarPanelDeJuego()">
+                <img id="cruz" src="img/cruz1.png" alt="cruz">
+            </button>
+            
             <button id="mostrarInstrucciones" onclick="mostrarInstruccionesDesdeElJuego();"><img
                     src="./img/question.png" alt="">
             </button>
@@ -30,7 +31,7 @@
                 </a>
             </button>
             <button id="toggleMusica" onclick="toggleMusica()">
-                <img id="iconoMusica" src="img/audio.png" alt="Icono de audio">
+                <img id="iconoMusica" src="img/pausa.png" alt="Icono de audio">
             </button>
             <button id="botonColeccion" onclick="mostrarColeccion()">
                 <img id="coleccionImg" src="img/coleccion.png" alt="Icono de coleccion">
@@ -119,9 +120,11 @@
     <audio id="sonido_cartas_comienzo" src="sonidos/cartas_comienzo.mp3"></audio>
     <audio id="game_over" src="sonidos/game_over.mp3"></audio>
 
-    <audio id="musica_fondo" src="sonidos/musica_luigi.mp3"></audio>
+    
+    <audio id="musica_fondo" src="sonidos/14.mp3"></audio>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="./js/main.js"></script>
 </body>
 

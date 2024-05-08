@@ -115,8 +115,9 @@ function restarSaldo() {
 
 // PACKS 
 
-let fondosDelUsuario = JSON.parse(localStorage.getItem('fondosDelUsuario')) || ['fondo_predeterminado.jpg','fondo_11_V.mp4'];
-let contadorDeFondos = JSON.parse(localStorage.getItem('contadorDeFondos')) || 2;
+let fondosDelUsuario = JSON.parse(localStorage.getItem('fondosDelUsuario')) || ['fondo_09_V.mp4','fondo_10_V.mp4','fondo_11_V.mp4','fondo_12_V.mp4','fondo_13_V.mp4','fondo_14_V.mp4'];
+let contadorDeFondos = JSON.parse(localStorage.getItem('contadorDeFondos')) || 6;
+
 
 guardarEnLocalStorageLosFondos()
 
@@ -388,6 +389,8 @@ function cambiarFondo(nuevoFondo) {
         let nuevoVideoURL = `./imagenes_fondo/${nuevoFondo}`;
         video.src = nuevoVideoURL;
         video.play();
+        cambiarMusica(nuevoVideoURL)
+        
     } else {
         const video = document.getElementById("background-video");
         const imagen = document.getElementById('background-img');
@@ -396,9 +399,35 @@ function cambiarFondo(nuevoFondo) {
 
         const fondo = document.getElementById('background-img');
         fondo.src = `./imagenes_fondo/${nuevoFondo}`;
+        musicaFondo.src =`sonidos/13.mp3`;
+        musicaFondo.loop = true;
+        musicaFondo.play();
     }
     localStorage.setItem('fondoActual', nuevoFondo);
     
+}
+
+function cambiarMusica(nombreDelVideo){
+    let numeroDeLaCancion = buscarNumeroDeLaCancion(nombreDelVideo)
+    musicaFondo.src =`sonidos/${numeroDeLaCancion}.mp3`;
+    musicaFondo.loop = true;
+    musicaFondo.play();
+    iconoMusica.src = "./img/pausa.png";
+}
+
+function buscarNumeroDeLaCancion(video) {
+    let numeroDeLaCancion = "";
+    for (let i = 0; i < video.length; i++) {
+        if (!isNaN(video[i])) {
+            numeroDeLaCancion += video[i];
+            if (!isNaN(video[i + 1])) {
+                numeroDeLaCancion += video[i + 1];
+                break;
+            }
+        }
+    }
+    console.log(numeroDeLaCancion)
+    return numeroDeLaCancion;
 }
 
 function revisarUltimo(nuevoFondo) {
@@ -748,6 +777,53 @@ function cerrarColeccion(){
         mostrarColeccion()
     };
 }
+const panelDeJuego = document.getElementById('container')
+
+let timeoutID; 
+
+function cerrarPanelDeJuego(){
+    const panelDeJuego = document.getElementById('container');
+    const img = document.getElementById('coleccionImg')
+    panelDeJuego.style.opacity = '0';
+    setTimeout(function() {
+        panelDeJuego.style.display = 'none';
+        document.body.classList.add('cursor-oculto'); 
+        coleccionContainer.style.display = 'none';
+        img.src = './img/coleccion.png'
+    }, 0); 
+}
+
+function mostrarPanelDeJuego(){
+    const panelDeJuego = document.getElementById('container');
+    panelDeJuego.style.display = 'block';
+    setTimeout(function() {
+        panelDeJuego.style.opacity = '1';
+        document.body.classList.remove('cursor-oculto');
+    }, 700); 
+}
+
+let lastMouseX = -1;
+let lastMouseY = -1;
+
+document.addEventListener('mousemove', function(event) {
+    const threshold = 10; 
+
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    const deltaX = Math.abs(mouseX - lastMouseX);
+    const deltaY = Math.abs(mouseY - lastMouseY);
+
+    if (deltaX > threshold || deltaY > threshold) {
+        mostrarPanelDeJuego();
+    }
+
+    lastMouseX = mouseX;
+    lastMouseY = mouseY;
+});
+
+
+
 
 //INSTRUCCIONES TIENDA
 actualizarSaldo(saldo)
